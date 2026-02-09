@@ -1,65 +1,98 @@
-import Image from "next/image";
+import Link from "next/link";
 
-export default function Home() {
+export default function HomePage() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
+    <main className="min-h-screen bg-black text-white">
+      {/* Hero */}
+      <section className="mx-auto max-w-6xl px-6 py-16">
+        <div className="rounded-3xl border border-white/10 bg-white/5 p-10 shadow-xl">
+          <p className="text-sm tracking-widest text-white/70">THRILLS SKILL ACADEMY</p>
+          <h1 className="mt-3 text-4xl font-bold leading-tight md:text-6xl">
+            Train. Compete. Level Up.
           </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+          <p className="mt-5 max-w-2xl text-lg text-white/80">
+            Elite skill development + travel basketball built for growth, discipline, and confidence.
+            Join the family and put in real work.
           </p>
+
+          <div className="mt-8 flex flex-wrap gap-3">
+            <Link
+              href="/tryouts"
+              className="rounded-2xl bg-white px-6 py-3 text-black font-semibold hover:opacity-90"
+            >
+              Register for Tryouts
+            </Link>
+
+            <Link
+              href="/payments"
+              className="rounded-2xl border border-white/20 bg-transparent px-6 py-3 font-semibold hover:bg-white/10"
+            >
+              Pay Registration / Fees
+            </Link>
+          </div>
+
+          <div className="mt-8 grid gap-4 md:grid-cols-3">
+            <Stat label="Practice" value="2–3x / week" />
+            <Stat label="Tournaments" value="6-Pack Series" />
+            <Stat label="Ages" value="9U–17U" />
+          </div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+      </section>
+
+      {/* Info blocks */}
+      <section className="mx-auto max-w-6xl px-6 pb-20">
+        <div className="grid gap-6 md:grid-cols-2">
+          <Card title="What you get">
+            <ul className="list-disc pl-5 text-white/80 space-y-2">
+              <li>High-level skill development (handles, shooting, IQ)</li>
+              <li>Competitive travel schedule</li>
+              <li>Accountability + culture</li>
+              <li>Player development plan</li>
+            </ul>
+          </Card>
+
+          <Card title="Tryouts + Registration">
+            <p className="text-white/80">
+              Register first to lock your spot. Tryout fee/registration is <span className="font-semibold text-white">$50</span>.
+              Scholarship/fundraising options available.
+            </p>
+            <div className="mt-4 flex gap-3">
+              <Link href="/tryouts" className="rounded-xl bg-white px-4 py-2 text-black font-semibold">
+                Tryout Registration
+              </Link>
+              <Link href="/schedule" className="rounded-xl border border-white/20 px-4 py-2 font-semibold hover:bg-white/10">
+                View Schedule
+              </Link>
+            </div>
+          </Card>
         </div>
-      </main>
+      </section>
+
+      {/* Footer */}
+      <footer className="border-t border-white/10 py-8">
+        <div className="mx-auto max-w-6xl px-6 text-sm text-white/70 flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
+          <p>© {new Date().getFullYear()} Thrills Skill Academy</p>
+          <p>Questions: thrillsskillacademy@gmail.com • 407-383-3483</p>
+        </div>
+      </footer>
+    </main>
+  );
+}
+
+function Stat({ label, value }: { label: string; value: string }) {
+  return (
+    <div className="rounded-2xl border border-white/10 bg-black/30 p-5">
+      <p className="text-xs uppercase tracking-widest text-white/60">{label}</p>
+      <p className="mt-2 text-xl font-bold">{value}</p>
+    </div>
+  );
+}
+
+function Card({ title, children }: { title: string; children: React.ReactNode }) {
+  return (
+    <div className="rounded-3xl border border-white/10 bg-white/5 p-8">
+      <h2 className="text-2xl font-bold">{title}</h2>
+      <div className="mt-4">{children}</div>
     </div>
   );
 }
