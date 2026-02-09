@@ -96,3 +96,28 @@ function Card({ title, children }: { title: string; children: React.ReactNode })
     </div>
   );
 }
+ export default function TryoutsPage() {
+  return (
+    <main className="min-h-screen bg-black text-white">
+      <div className="mx-auto max-w-6xl px-6 py-10">
+        <h1 className="text-4xl font-bold">Tryout Registration</h1>
+        <p className="mt-3 text-white/80">
+          Complete this form to register. Registration is <span className="font-semibold text-white">$50</span>.
+        </p>
+
+        <div className="mt-8 rounded-3xl border border-white/10 bg-white/5 p-4">
+          {/* Jotform embed */}
+          <iframe
+            src="https://form.jotform.com/260246445065152"
+            title="Thrills Skill Tryout Registration"
+            className="h-[900px] w-full rounded-2xl"
+          />
+        </div>
+
+        <p className="mt-5 text-sm text-white/60">
+          If the form doesn’t load, open it in a new tab and complete it there.
+        </p>
+      </div>
+    </main>
+  );
+}
